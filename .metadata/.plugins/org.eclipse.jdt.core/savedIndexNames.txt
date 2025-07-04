@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Users\caiop\OneDrive\Documentos\Estudos\Z2- Estudos2025\Java\AlugarVeiculos\.metadata\.plugins\org.eclipse.jdt.core
+3117835077.index
+1865797976.index
+4242355545.index
