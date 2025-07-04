@@ -1,0 +1,40 @@
+package application;
+
+import java.time.LocalDateTime;
+import java.util.Locale;
+import java.util.Scanner;
+
+import model.entities.CarRental;
+import model.entities.Vehicle;
+import model.utils.UtilsDate;
+
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Entre com os dados do carro");
+		System.out.print("Modelo do carro: ");
+		String modelo = sc.nextLine();
+		System.out.print("Retirada (DD/MM/YYYY HH:mm): ");
+		String start = sc.nextLine();
+		LocalDateTime startFormat = UtilsDate.stringToDate(start);	
+		System.out.print("Retornp (DD/MM/YYYY HH:mm): ");
+		String finish = sc.nextLine();
+		LocalDateTime finishFormat = UtilsDate.stringToDate(finish);
+		
+		CarRental car = new CarRental(startFormat, finishFormat, new Vehicle(modelo));
+		
+		System.out.print("Entre com o preço por hora: ");
+		double pricePerHour = sc.nextDouble();
+		System.out.print("Entre com o preço por dia: ");
+		double pricePerDat = sc.nextDouble();
+		
+		
+		sc.close();
+	}
+
+}

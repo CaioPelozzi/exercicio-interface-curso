@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import model.entities.CarRental;
 import model.entities.Vehicle;
+import model.services.BrazilTaxService;
+import model.services.RentalService;
 import model.utils.UtilsDate;
 
 
@@ -24,8 +26,23 @@ public class Program {
 		LocalDateTime startFormat = UtilsDate.stringToDate(start);	
 		System.out.print("Retornp (DD/MM/YYYY HH:mm): ");
 		String finish = sc.nextLine();
-		LocalDateTime finishFormat = UtilsDate.stringToDate(finish);	
-		CarRental car = new CarRental(startFormat, finishFormat, new Vehicle(modelo));;;;
+		LocalDateTime finishFormat = UtilsDate.stringToDate(finish);
+		
+		CarRental car = new CarRental(startFormat, finishFormat, new Vehicle(modelo));
+		
+		System.out.print("Entre com o preço por hora: ");
+		double pricePerHour = sc.nextDouble();
+		System.out.print("Entre com o preço por dia: ");
+		double pricePerDay = sc.nextDouble();
+		
+		RentalService rentalService = new RentalService(pricePerHour, pricePerDay, new BrazilTaxService());
+		
+		rentalService.processInvoice(car);
+		
+		System.out.println("FATURA: ");
+		System.out.println("Pagamento básico: " + car.getInvoice().getBasicPayment());
+		System.out.println("Imposto: " + car.getInvoice().getTax());
+		System.out.println("Pagamento total: " + car.getInvoice().getTotalPayment());
 		
 		sc.close();
 	}
