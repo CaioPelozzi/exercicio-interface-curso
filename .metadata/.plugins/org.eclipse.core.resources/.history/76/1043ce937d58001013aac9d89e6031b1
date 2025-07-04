@@ -15,7 +15,6 @@ public class RentalService {
 	public RentalService(double priceperDay, double pricePerHour, TaxService taxService) {
 		this.pricePerDay = priceperDay;
 		this.pricePerHour = pricePerHour;
-		this.taxService = taxService;
 	}
 	
 	
